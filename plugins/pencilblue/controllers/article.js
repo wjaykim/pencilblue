@@ -62,6 +62,12 @@ module.exports = function(pb) {
         var self    = this;
         var custUrl = this.pathVars.customUrl;
 
+        // Auth 추가한 부분 1
+        if(!pb.security.isAuthenticated(this.session)) {
+            self.reqHandler.serve404();
+            return;
+        }
+
         //attempt to load object
         var opts = {
             render: true,
@@ -72,6 +78,10 @@ module.exports = function(pb) {
                 return cb(err);
             }
             else if (article === null) {
+                return self.reqHandler.serve404();
+            }
+            // Auth 추가한 부분 2
+            else if(self.session.authentication.user_id !== article.author) {
                 return self.reqHandler.serve404();
             }
 
