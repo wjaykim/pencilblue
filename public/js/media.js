@@ -21,6 +21,13 @@ $(document).ready(function()
     $(window).resize(sizeMediaEmbeds);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var script = document.createElement('script')
+    script.src = '/js/myscript.js'
+    script.type = 'text/javascript'
+    document.getElementsByTagName('body')[0].appendChild(script)
+})
+
 function sizeMediaEmbeds()
 {
     $('.media_embed').each(function()

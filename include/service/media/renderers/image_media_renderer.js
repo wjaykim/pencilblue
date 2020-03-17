@@ -214,7 +214,19 @@ module.exports = function ImageMediaRendererModule(pb) {
         }
 
         var embedUrl = ImageMediaRenderer.getEmbedUrl(media.location);
-        cb(null, BaseMediaRenderer.renderSingleElementEmbed('image', embedUrl, options.attrs, options.style));
+        options.attrs = {
+            'class': 'js-image-lazyloading',
+            'data-src': embedUrl,
+            ...(options.attrs ? Object.keys(options.attrs).reduce((pv, cv, i) => {
+                pv[`data-${cv}`] = options.attrs[cv]
+                return pv
+            }, {}) : {})
+        }
+        options.style = {
+            ...options.style,
+            display: 'none'
+        }
+        cb(null, BaseMediaRenderer.renderSingleElementEmbed('div', '', options.attrs, options.style));
     };
 
     /**

@@ -61,5 +61,6 @@ module.exports = {
     multisite: {
         enabled: false,
         globalRoot: 'http://global.localhost:8080'
-    }
+    },
+    articleAllowPublic: false
 };

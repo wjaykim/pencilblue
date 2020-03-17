@@ -55,7 +55,9 @@ module.exports = function BaseMediaRenderer(pb) {
             style = {};
         }
 
-        return '<'+elementName+' src="' + HtmlEncoder.htmlEncode(srcUrl) + '" ' +
+        var src = srcUrl ? 'src="' + HtmlEncoder.htmlEncode(srcUrl) + '"' : ''
+
+        return '<'+elementName+' ' + src + ' ' +
             BaseMediaRenderer.getAttributeStr(attrs) +
             BaseMediaRenderer.getStyleAttrStr(style) +
             '></' + elementName + '>';
