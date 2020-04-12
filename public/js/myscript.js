@@ -1,4 +1,8 @@
-var script = document.createElement('script')
-script.src = '/js/myscript-final.js'
-script.type = 'text/javascript'
-document.getElementsByTagName('body')[0].appendChild(script)
+var delay = 0
+
+setTimeout(function() {
+    var script = document.createElement('script')
+    script.src = '/js/myscript-final.js'
+    script.type = 'text/javascript'
+    document.getElementsByTagName('body')[0].appendChild(script)
+}, delay)
